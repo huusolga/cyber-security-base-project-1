@@ -1,5 +1,7 @@
 # Cyber security base - Project 1
 
+This project is a part of the Cyber Security Base course. The Todo App is a simple application where users can create an account, log in, enter chores to the to do-list, and check them once finished. This project uses Flask instead of Django that was used in the course, but I've provided instruction for starting the application below. After the instruction, you'll also find the essay required in this assignment.
+
 ## Installing instructions
 
 1. Open your terminal and clone the repository:
@@ -11,6 +13,7 @@ git clone https://github.com/huusolga/cyber-security-base-project-1
 cd csb-project1
 ```
 3. Install PostgresSQL
+
 If you’re using… 
 - Linux: use [this installation script](https://github.com/hy-tsoha/local-pg)
 - Windows: download the installation package from [Postgres website](https://www.postgresql.org/download/)
@@ -21,7 +24,9 @@ If you’re using…
 touch .env
 ```
 Add this line to the file:
+
 DATABASE_URL=address
+
 where address is postgresql+psycopg2:// if Postgres was installed with Linux and otherwise postgresql:///user where “user” is the name of the database that shows up when opening the PostgreSQL interpreter.
 
 5. Activate a virtual environment:
@@ -51,5 +56,6 @@ flask run
 You'll find the Todo App by default at localhost:5000
 
 ## Essay 
+
 
 
