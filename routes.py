@@ -1,6 +1,6 @@
 from flask import redirect, render_template, abort, request, session
 """
-Cryptographic Failures fix
+Flaw 2: Cryptographic Failures
 
 from werkzeug.security import check_password_hash
 """
@@ -53,7 +53,7 @@ def login():
     """
     Fix 5: Security Logging and Monitoring failures
 
-    Code below limits the amount of logins and fixes
+    Code below limits the amount of logins
 
     if session["attempts"] >= 30:
         return redirect(request.referrer)
@@ -66,8 +66,9 @@ def login():
         return redirect(request.referrer)
     else:
         """
-        Commented code uses hash function to check password
-        and fix Cryptographic failures
+        Fix 2: Cryptographic failures
+
+        Code below uses hash function to check if the password is correct
 
         hash = user.password
         if check_password_hash(hash, password):
@@ -78,14 +79,16 @@ def login():
             session["admin"] = user.admin
             session["invalid_user"] = False
             """
-            Used to fix security logging
+            Fix 5: Security Logging and Monitoring Failures
+
             session["attempts"] = 0
             """
             session["csrf_token"] = token_hex(16)
         else:
             session["invalid_user"] = True
             """
-            Used to fix security logging
+            Fix 5: Security Logging and Monitoring Failures
+
             session["attempts"] += 1
             """
             return redirect(request.referrer)
@@ -103,8 +106,8 @@ def logout():
 @app.route("/admin_page")
 def admin():
     """ 
-    Commented code fixes Broken Access Control
-
+    Fix 1: Broken Access Control
+    
     try:
         if not session['admin']:
             return redirect("/")
