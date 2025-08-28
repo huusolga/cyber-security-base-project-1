@@ -1,12 +1,16 @@
 """
-Import regular expressions to fix Identification and Authentication Failures
+Fix 4: Identification and Authentication Failures
+
+Import regular expressions
 
 import re
 """
 from sqlalchemy.sql import text
 
 """
-Import hash function to fix Cryptographic Failures
+Fix 2: Cryptographic Failures
+
+Import hash function
 
 from werkzeug.security import generate_password_hash
 """
@@ -14,7 +18,9 @@ from database import db
 
 def add_user(username, password):
     """
-    Commented code hashes password before storing in database and fix Cryptographic Failures
+    Fix 2: Cryptographic failures
+    
+    Commented code hashes password before storing in database
     
     password_hash = generate_password_hash(password)
     """
@@ -25,7 +31,9 @@ def add_user(username, password):
         # db.session.execute(text(sql), {"username":username, "password":password_hash})
 
         """
-        Commented code uses regular expressions to fix Identification and Authentication Failures
+        Fix 4: Identification and Authentication Failures
+
+        Code below uses regular expressions to fix Identification and Authentication Failures
 
         if len(password) < 8:
            print("Password must contain at least 8 characters")
@@ -51,7 +59,9 @@ def create_todo(content, username):
     db.session.execute(text(sql))
 
     """
-    Commented code uses input sanitization to fix SQL Injection
+    Fix 3: Injection
+
+    Code below uses input sanitization and should replace the code above
 
     sql = "INSERT INTO todos (content, username, created_at) VALUES (:content, :username, NOW()) RETURNING id"
     db.session.execute(text(sql), {"content":content, "username":username})
