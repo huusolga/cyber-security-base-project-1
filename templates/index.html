@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fi">
+    <head>
+        <title>Todo app</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Todo app</h1>
+        </div>
+        <div class="content"> 
+            {% if session.username %}
+                <nav>
+                    <ul>
+                        <li>{{ session.username }} logged in</li>
+                        {% if session.admin %}
+                        <li><a href="/admin_page">Admin page</a></li>
+                        {% endif %}
+                        <li><a href="/logout">Log out</a></li>
+                    </ul>
+                </nav>
+        
+            <h2>My todos</h2>
+
+            {% if todos %}
+
+            <div class="todo-list">
+                Things to do: {{ count }}
+                <br>
+                {% for todo in todos %}
+                <ul>
+                    <li>
+                        {{ todo.content }}
+                        <form id="delete-button" action="/delete_todo/{{ todo.id }}" method="POST">
+                            <input type="submit" value="Check">
+                            <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+                        </form>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+
+            {% else %}
+                No todos.<br><br>
+            {% endif %}
+
+            <form id="create-new" action="/create" method="POST">
+                <label for=content>Add todo:</label>
+                <input type="text" name="content" required>
+                <input type="submit" value="Send">
+                <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+            </form>
+                
+            {% else %}
+                <form action="/login" method="POST">
+                    Username: <input type="text" name="username" required>
+                    Password: <input type="password" name="password" required>
+                    <input type="submit" value="Log in">
+                    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+                <br>
+                {% if session.invalid_user %}
+                <br>Invalid username or password<br>
+                {% endif %}
+                <a href="/register">Register a new user</a>
+                {% endif %}
+                </form>
+            
+
+        </div>
+    </body>
+
+</html>
+
+    

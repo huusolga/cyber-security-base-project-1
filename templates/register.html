@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fi">
+    <head>
+        <title>Todo app</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+    </head>
+
+    <body>
+        <div class="header"><h1>Todo app</h1></div>
+
+        <div class="content">
+            <div>
+            {% if session.passwords_differ %}
+            The passwords are not the same
+            {% elif session.username_in_use %}
+            The username is already taken
+            {% endif %}
+        </div>
+
+        <form class="box" action="/register" method="POST">
+            <div>
+                Username: <input type="text" name="username" required placeholder="Username">
+            </div>
+            <div>
+                Password: <input type="password" name="password" required placeholder="Password">
+
+        <!--    This section uses HTML validators to mitigate Identification and Authentication failures
+                <input type="password" name="password" required minlength="8" placeholder="Password">
+        -->
+            </div>
+            <div>
+                Password again: <input type="password" name="password_again" required placeholder="Password again">
+            </div>
+            <input id="query-button" type="submit" value="Register">
+            <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+        </form>
+        <a href="/">Go back</a>
+
+        <script>
+            function check(form) {
+                if (form.password.value != form.password_again.value) {
+                    alert("The passwords are not the same");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+        </div>
+    </body>
+</html>
