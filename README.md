@@ -27,6 +27,8 @@ where address is postgresql+psycopg2:// if Postgres was installed with Linux and
 5. Activate a virtual environment:
 ```bash
 python3 -m venv venv
+```
+```bash
 source venv/bin/activate
 ```
 
@@ -49,4 +51,5 @@ flask run
 You'll find the Todo App by default at localhost:5000
 
 ## Essay 
+
 
