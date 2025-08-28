@@ -1,6 +1,6 @@
-#Cyber security base - Project 1
+# Cyber security base - Project 1
 
-# Installing instructions
+## Installing instructions
 
 1. Open your terminal and clone the repository:
 ```bash
@@ -12,9 +12,9 @@ cd csb-project1
 ```
 3. Install PostgresSQL
 If you’re using… 
-- Linux: use this installation script
-- Windows: download the installation package from Postgres website
-- Mac: use Postgres.app
+- Linux: use [this installation script](https://github.com/hy-tsoha/local-pg)
+- Windows: download the installation package from [Postgres website](https://www.postgresql.org/download/)
+- Mac: use [Postgres.app](https://postgresapp.com/)
   
 4. Create a new .env file
 ```bash
@@ -48,4 +48,5 @@ flask run
 ```
 You'll find the Todo App by default at localhost:5000
 
-# Essay 
+## Essay 
+
