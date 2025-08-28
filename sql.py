@@ -26,9 +26,6 @@ def add_user(username, password):
     """
     try:
         sql = "INSERT INTO users (username, password, admin) VALUES (:username, :password, FALSE)"
-        
-        # Commented code stores the hashed password instead of the plaintext password.
-        # db.session.execute(text(sql), {"username":username, "password":password_hash})
 
         """
         Fix 4: Identification and Authentication Failures
@@ -43,7 +40,17 @@ def add_user(username, password):
             db.session.execute(text(sql), {"username":username, "password":password})
             db.session.commit()
         """
+
         db.session.execute(text(sql), {"username":username, "password":password})
+        
+        """
+        Fix 2: Cryptographic Failures
+
+        Code below stores the hashed password instead of the plaintext password and replaces the code above in a fixed version
+        
+        db.session.execute(text(sql), {"username":username, "password":password_hash})
+        """
+        
         db.session.commit()
     except:
         return False
@@ -87,4 +94,5 @@ def remove_user(id):
 def get_users():
     sql = "SELECT * FROM users"
     result = db.session.execute(text(sql))
+
     return result.fetchall()
