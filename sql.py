@@ -30,7 +30,7 @@ def add_user(username, password):
         """
         Fix 4: Identification and Authentication Failures
 
-        Code below uses regular expressions to fix Identification and Authentication Failures
+        Code below checks if password fills the requirements, otherwise it gives a message what is missing.
 
         if len(password) < 8:
            print("Password must contain at least 8 characters")

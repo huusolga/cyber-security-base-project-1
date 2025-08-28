@@ -68,7 +68,8 @@ def login():
         """
         Fix 2: Cryptographic failures
 
-        Code below uses hash function to check if the password is correct
+        Code below uses function check_password_hash which checks whether the hashed correct password
+        and the hashed password from user input match. 
 
         hash = user.password
         if check_password_hash(hash, password):
@@ -107,7 +108,7 @@ def logout():
 def admin():
     """ 
     Fix 1: Broken Access Control
-    
+
     try:
         if not session['admin']:
             return redirect("/")
