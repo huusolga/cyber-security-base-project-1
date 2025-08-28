@@ -60,14 +60,14 @@ You'll find the Todo App by default at localhost:5000
 I used the OWASP 2021 Top 10 list [1].
 
 ### Flaw 1: A01 Broken Access Control
-Link to Flaw 1: 
+Link to Flaw 1: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L106 
 
 Broken Access Control risk means a vulnerability that allows users to have access to something that they aren’t permitted to. This could include things like sensitive information or the ability to perform certain functions outside their initial limits.
 A Broken Access Control risk is implemented in the Todo App by allowing anyone to access the admin page. If you modify the url address by adding “/admin_page”, you’ll gain access to the admin page and can see each user’s username and password. This is an obvious security flaw since it is very easy to retrieve sensitive information.
 
 To fix this vulnerability, it is checked whether the user is logged in as an admin or not before opening the admin page. If the user isn’t admin, they are directed to the index page. The fix is commented in the code and you can see it through the link below:
 
-Link to Fix 1: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L109
+Link to Fix 1: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L109-115
 
 ## Flaw 2: A02 Cryptographic Failures
 Link to Flaw 2: 
@@ -115,5 +115,6 @@ Link to Fix 5:
 
 
 [1] https://owasp.org/Top10/ 
+
 
 
