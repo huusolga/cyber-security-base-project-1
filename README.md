@@ -101,7 +101,7 @@ Link to Flaw 4: https://github.com/huusolga/cyber-security-base-project-1/blob/m
 
 Confirming the user's identity, using strong authentication methods, and proper session management are crucial in withholding security and are at the core of Identification and Authentication Failures. When creating a user account in the Todo App, the username and password can be anything. However, this allows for the password to be something like “123” or the same as the username, which are very weak for example in a brute force attack where passwords are retrieved through trial and error. 
 
-To fix this, an additional check for the password is included in the code. It checks whether it’s over eight characters long and if it has a number in it. If the password fails either of those requirements, the account isn’t created and the app prints what’s missing from the password.
+To fix this, an additional check for the password is included in the code. It checks whether it’s over eight characters long and if it has a number in it, for which the regular expressions library is imported. If the password fails either of those requirements, the account isn’t created and the app prints what’s missing from the password.
 Ideally there are even more requirements for a password, like having to contain both lower and upper case letters as well as symbols like the exclamation mark or parenthesis, but this is just a simple example how to improve this specific application.
 
 Fix in HTML: https://github.com/huusolga/cyber-security-base-project-1/blob/main/templates/register.html#L28-30
@@ -129,6 +129,7 @@ Can't login if user has too many tries: https://github.com/huusolga/cyber-securi
 ### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
