@@ -126,11 +126,11 @@ Can't login if user has too many tries: https://github.com/huusolga/cyber-securi
 
 Increasing the number of failed logins: 
 
-https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L74-76
+https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L74-L76
 
-https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L103-105
+https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L103-L105
 
-Initializing the times the user has tried to login: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L95-L97
+Initializing the counter: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L95-L97
 
 There is no before-screenshot because it doesn't really show on the browser that you can try to login for as many times as possible.
 
@@ -138,6 +138,7 @@ There is no before-screenshot because it doesn't really show on the browser that
 ### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
