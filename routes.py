@@ -123,9 +123,9 @@ def admin():
 
     try:
         if not session['admin']:
-            return redirect("/")
+            return abort(403)
     except KeyError:
-        return redirect("/")
+        return abort(403)
     """
     clear_errors()
     users = sql.get_users()
