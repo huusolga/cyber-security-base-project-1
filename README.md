@@ -96,6 +96,8 @@ The injection vulnerability is fixed simply by inserting a sanitized input in th
 
 Link to Fix 3: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L74-79
 
+The screenshots are from the terminal and they show what the sql command looks like with and without sanitization.
+
 ### Flaw 4: A07 Identification and Authentication Failures:
 Link to Flaw 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L21-47
 
@@ -127,10 +129,13 @@ https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L1
 
 Can't login if user has too many tries: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L94-96
 
+There is no before-screenshot because it doesn't really show on the browser that you can try to login for as many times as possible.
+
 
 ### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
