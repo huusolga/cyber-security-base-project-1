@@ -99,14 +99,16 @@ Link to Fix 3: https://github.com/huusolga/cyber-security-base-project-1/blob/ma
 The screenshots are from the terminal and they show what the sql command looks like with and without sanitization.
 
 ### Flaw 4: A07 Identification and Authentication Failures:
-Link to Flaw 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L21-L47
+Link to Flaw 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L32
+and then 
+https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L47
 
 Confirming the user's identity, using strong authentication methods, and proper session management are crucial in withholding security and are at the core of Identification and Authentication Failures. When creating a user account in the Todo App, the username and password can be anything. However, this allows for the password to be something like “123” or the same as the username, which are very weak for example in a brute force attack where passwords are retrieved through trial and error. 
 
 To fix this, an additional check for the password is included in the code. It checks whether it’s over eight characters long and if it has a number in it, for which the regular expressions library is imported. If the password fails either of those requirements, the account isn’t created and the app prints what’s missing from the password.
 Ideally there are even more requirements for a password, like having to contain both lower and upper case letters as well as symbols like the exclamation mark or parenthesis, but this is just a simple example how to improve this specific application.
 
-Fix on sql.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L35-L44
+Link to Fix 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L35-L44
 
 ### Flaw 5: A09 Security Logging and Monitoring Failures:
 Link to Flaw 5: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L57-L108
@@ -135,6 +137,7 @@ There is no before-screenshot because it doesn't really show on the browser that
 ### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
