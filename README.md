@@ -69,7 +69,7 @@ To fix this vulnerability, it is checked whether the user is logged in as an adm
 
 Link to Fix 1: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L109-115
 
-## Flaw 2: A02 Cryptographic Failures
+### Flaw 2: A02 Cryptographic Failures
 Link to Flaw 2: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L44
 
 Cryptographic Failures focus on the most sensitive data such as passwords, credit card numbers and other such personal information. This kind of sensitive information should be handled with additional care. 
@@ -86,7 +86,7 @@ Creating hashed password: https://github.com/huusolga/cyber-security-base-projec
 
 Storing the hashed password: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L47-51
 
-## Flaw 3: A03 Injection
+### Flaw 3: A03 Injection
 Link to Flaw 3: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L65
 
 The input provided by the user should always be filtered or sanitized. Otherwise, if the input is formulated in a certain way, it is treated as code in the program. This allows for untrusted users to execute malicious code and as a result for example leak sensitive information or in turn, destroy them. This vulnerability risk is called an injection.
@@ -96,7 +96,7 @@ The injection vulnerability is fixed simply by inserting a sanitized input in th
 
 Link to Fix 3: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L69-74
 
-## Flaw 4: A07 Identification and Authentication Failures:
+### Flaw 4: A07 Identification and Authentication Failures:
 Link to Flaw 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L28-44
 
 Confirming the user's identity, using strong authentication methods, and proper session management are crucial in withholding security and are at the core of Identification and Authentication Failures. When creating a user account in the Todo App, the username and password can be anything. However, this allows for the password to be something like “123” or the same as the username, which are very weak for example in a brute force attack where passwords are retrieved through trial and error. 
@@ -108,7 +108,7 @@ Fix in HTML: https://github.com/huusolga/cyber-security-base-project-1/blob/main
 
 Fix on sql.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L31-41
 
-## Flaw 5: A09 Security Logging and Monitoring Failures:
+### Flaw 5: A09 Security Logging and Monitoring Failures:
 Link to Flaw 5: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L51-96
 
 Security Logging and Monitoring Failures refer to risks that occur during active breaches. An application should be equipped to detect and respond to breaches while they’re happening by noticing unusual activity. This can be achieved by logging and monitoring for example failed logins, errors or high-value transactions.
@@ -129,6 +129,7 @@ Can't login if user has too many tries: https://github.com/huusolga/cyber-securi
 ### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
