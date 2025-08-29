@@ -5,6 +5,7 @@ Import regular expressions
 
 import re
 """
+
 from sqlalchemy.sql import text
 
 """
@@ -14,6 +15,7 @@ Import hash function
 
 from werkzeug.security import generate_password_hash
 """
+
 from database import db
 
 def add_user(username, password):
@@ -21,9 +23,11 @@ def add_user(username, password):
     Fix 2: Cryptographic failures
     
     Commented code hashes password before storing in database
+
     
     password_hash = generate_password_hash(password)
     """
+
     try:
         sql = "INSERT INTO users (username, password, admin) VALUES (:username, :password, FALSE)"
 
@@ -47,6 +51,7 @@ def add_user(username, password):
         Fix 2: Cryptographic Failures
 
         Code below stores the hashed password instead of the plaintext password and replaces the code above in a fixed version
+
         
         db.session.execute(text(sql), {"username":username, "password":password_hash})
         """
