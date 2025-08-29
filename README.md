@@ -70,7 +70,7 @@ To fix this vulnerability, it is checked whether the user is logged in as an adm
 Link to Fix 1: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L109-115
 
 ## Flaw 2: A02 Cryptographic Failures
-Link to Flaw 2: 
+Link to Flaw 2: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L44
 
 Cryptographic Failures focus on the most sensitive data such as passwords, credit card numbers and other such personal information. This kind of sensitive information should be handled with additional care. 
 
@@ -79,42 +79,57 @@ However, the Todo App stores passwords as they are given, without any encryption
 Instead, passwords should always be encrypted so even in case of a data breach, the passwords have an extra layer of protection since attackers won’t know which hashing technique was used. The weakness is fixed in the code by hashing the passwords before storing them. For this, the werkzeug.security library is imported in routes.py and sql.py. 
 
 Fix in routes.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L69
-Fix in sql.py: 
+
+Fixes in sql.py:
+
+Creating hashed password: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L21-25
+
+Storing the hashed password: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L47-51
 
 ## Flaw 3: A03 Injection
-Link to Flaw 3: 
+Link to Flaw 3: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L65
 
 The input provided by the user should always be filtered or sanitized. Otherwise, if the input is formulated in a certain way, it is treated as code in the program. This allows for untrusted users to execute malicious code and as a result for example leak sensitive information or in turn, destroy them. This vulnerability risk is called an injection.
 
 A common injection type is an SQL injection, which is also implemented in the Todo App. The vulnerability here is that username and password inputs are taken and put in the SQL command as is. 
 The injection vulnerability is fixed simply by inserting a sanitized input in the command, so that the input is treated as a string.
 
-Fix in HTML:
-Fix in sql.py: 
+Link to Fix 3: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L69-74
 
 ## Flaw 4: A07 Identification and Authentication Failures:
-Link Flaw 4: 
+Link to Flaw 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L28-44
 
 Confirming the user's identity, using strong authentication methods, and proper session management are crucial in withholding security and are at the core of Identification and Authentication Failures. When creating a user account in the Todo App, the username and password can be anything. However, this allows for the password to be something like “123” or the same as the username, which are very weak for example in a brute force attack where passwords are retrieved through trial and error. 
 
 To fix this, an additional check for the password is included in the code. It checks whether it’s over eight characters long and if it has a number in it. If the password fails either of those requirements, the account isn’t created and the app prints what’s missing from the password.
 Ideally there are even more requirements for a password, like having to contain both lower and upper case letters as well as symbols like the exclamation mark or parenthesis, but this is just a simple example how to improve this specific application.
 
-Link to Fix 4: 
+Fix in HTML: https://github.com/huusolga/cyber-security-base-project-1/blob/main/templates/register.html#L28-30
+
+Fix on sql.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L31-41
 
 ## Flaw 5: A09 Security Logging and Monitoring Failures:
-Link to Flaw 5: 
+Link to Flaw 5: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L51-96
 
 Security Logging and Monitoring Failures refer to risks that occur during active breaches. An application should be equipped to detect and respond to breaches while they’re happening by noticing unusual activity. This can be achieved by logging and monitoring for example failed logins, errors or high-value transactions.
 
 In the Todo App, there is no limit to how many times you try to log in. The risk here is that suspicious or malicious behaviour like brute force attacks cannot be detected since the number of attempted logins aren’t being counted. It is suspicious and should be looked into if someone’s tried to log in to an account an excessive amount of times.
 
-The fix here is to set a limit to log in tries, after which you can’t attempt it anymore. The fix in the code is very simple and doesn’t give you more tries after a while, like most applications. 
+The fix here is to set a limit to log in tries, after which you can’t attempt it anymore. The fix in the code is very simple and doesn’t give you more tries after a certain amount of time, like most applications. 
 
-Link to Fix 5: 
+Links to Fix 5: 
 
+Initializing the times the user has tried to login: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L83-85
+
+Increasing the number of failed logins: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L91-93
+
+Can't login if user has too many tries: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L54-59
+
+
+### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
