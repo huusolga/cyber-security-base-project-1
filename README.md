@@ -60,14 +60,14 @@ You'll find the Todo App by default at localhost:5000
 I used the OWASP 2021 Top 10 list [1].
 
 ### Flaw 1: A01 Broken Access Control
-Link to Flaw 1: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L118-131
+Link to Flaw 1: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L119-L132
 
 Broken Access Control risk means a vulnerability that allows users to have access to something that they aren’t permitted to. This could include things like sensitive information or the ability to perform certain functions outside their initial limits.
 A Broken Access Control risk is implemented in the Todo App by allowing anyone to access the admin page. If you modify the url address by adding “/admin_page”, you’ll gain access to the admin page and can see each user’s username and password. This is an obvious security flaw since it is very easy to retrieve sensitive information.
 
 To fix this vulnerability, it is checked whether the user is logged in as an admin or not before opening the admin page. If the user isn’t admin, they are directed to the index page. The fix is commented in the code and you can see it through the link below:
 
-Link to Fix 1: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L121-127
+Link to Fix 1: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L122-L128
 
 ### Flaw 2: A02 Cryptographic Failures
 Link to Flaw 2: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L47
@@ -78,13 +78,13 @@ However, the Todo App stores passwords as they are given, without any encryption
 
 Instead, passwords should always be encrypted so even in case of a data breach, the passwords have an extra layer of protection since attackers won’t know which hashing technique was used. The weakness is fixed in the code by hashing the passwords before storing them. For this, the werkzeug.security library is imported in routes.py and sql.py. 
 
-Fix in routes.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L69
+Fix in routes.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L81-L86
 
 Fixes in sql.py:
 
-Creating hashed password: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L23-28
+Creating hashed password: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L23-L28
 
-Storing the hashed password: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L50-55
+Storing the hashed password: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L50-L55
 
 ### Flaw 3: A03 Injection
 Link to Flaw 3: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L70
@@ -94,22 +94,22 @@ The input provided by the user should always be filtered or sanitized. Otherwise
 A common injection type is an SQL injection, which is also implemented in the Todo App. The vulnerability here is that username and password inputs are taken and put in the SQL command as is. 
 The injection vulnerability is fixed simply by inserting a sanitized input in the command, so that the input is treated as a string.
 
-Link to Fix 3: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L74-79
+Link to Fix 3: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L74-L79
 
 The screenshots are from the terminal and they show what the sql command looks like with and without sanitization.
 
 ### Flaw 4: A07 Identification and Authentication Failures:
-Link to Flaw 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L21-47
+Link to Flaw 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L21-L47
 
 Confirming the user's identity, using strong authentication methods, and proper session management are crucial in withholding security and are at the core of Identification and Authentication Failures. When creating a user account in the Todo App, the username and password can be anything. However, this allows for the password to be something like “123” or the same as the username, which are very weak for example in a brute force attack where passwords are retrieved through trial and error. 
 
 To fix this, an additional check for the password is included in the code. It checks whether it’s over eight characters long and if it has a number in it, for which the regular expressions library is imported. If the password fails either of those requirements, the account isn’t created and the app prints what’s missing from the password.
 Ideally there are even more requirements for a password, like having to contain both lower and upper case letters as well as symbols like the exclamation mark or parenthesis, but this is just a simple example how to improve this specific application.
 
-Fix on sql.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L35-44
+Fix on sql.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L35-L44
 
 ### Flaw 5: A09 Security Logging and Monitoring Failures:
-Link to Flaw 5: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L57-107
+Link to Flaw 5: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L57-L108
 
 Security Logging and Monitoring Failures refer to risks that occur during active breaches. An application should be equipped to detect and respond to breaches while they’re happening by noticing unusual activity. This can be achieved by logging and monitoring for example failed logins, errors or high-value transactions.
 
@@ -119,15 +119,15 @@ The fix here is to set a limit to log in tries, after which you can’t attempt 
 
 Links to Fix 5: 
 
-Initializing the times the user has tried to login: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L60-66
+Can't login if user has too many tries: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L60-L66
 
 Increasing the number of failed logins: 
 
 https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L74-76
 
-https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L102-104
+https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L103-105
 
-Can't login if user has too many tries: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L94-96
+Initializing the times the user has tried to login: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L95-L97
 
 There is no before-screenshot because it doesn't really show on the browser that you can try to login for as many times as possible.
 
@@ -135,6 +135,7 @@ There is no before-screenshot because it doesn't really show on the browser that
 ### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
