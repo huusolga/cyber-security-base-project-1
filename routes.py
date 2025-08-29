@@ -21,6 +21,7 @@ def clear_errors():
     session["passwords_differ"] = False
     session["username_in_use"] = False
     session["registration_successful"] = False
+    session["register_error"] = False
 
 @app.route("/")
 def index():
@@ -34,6 +35,8 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "GET":
+        session["too_many_attempts"] = False
+        session["attempts"] = 0
         return render_template("register.html")
     if request.method == "POST":
         username = request.form["username"]
@@ -47,8 +50,9 @@ def register():
             session["registration_successful"] = True
             return redirect("/")
         elif not sql.add_user(username, password):
-            session["username_in_use"] = True
+            session["register_error"] = True
             return redirect("/register")
+
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -56,15 +60,20 @@ def login():
     Fix 5: Security Logging and Monitoring failures
 
     Code below limits the amount of logins
-
-    if session["attempts"] >= 30:
-        return redirect(request.referrer)
     """
+    if session["attempts"] >= 5:
+        session["too_many_attempts"] = True
+        return redirect(request.referrer)
+    
     username = request.form["username"]
     password = request.form["password"]
     user = sql.get_user(username)
     if not user:
         session["invalid_user"] = True
+        """
+        Fix 5: Security Logging and Monitoring Failures
+        """
+        session["attempts"] += 1
         return redirect(request.referrer)
     else:
         """
@@ -83,17 +92,17 @@ def login():
             session["invalid_user"] = False
             """
             Fix 5: Security Logging and Monitoring Failures
-
-            session["attempts"] = 0
             """
+            session["attempts"] = 0
+            
             session["csrf_token"] = token_hex(16)
         else:
             session["invalid_user"] = True
             """
             Fix 5: Security Logging and Monitoring Failures
-
-            session["attempts"] += 1
             """
+            session["attempts"] += 1
+            
             return redirect(request.referrer)
     return redirect(request.referrer)
 

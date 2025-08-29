@@ -2,9 +2,9 @@
 Fix 4: Identification and Authentication Failures
 
 Import regular expressions
-
-import re
 """
+import re
+
 
 from sqlalchemy.sql import text
 
@@ -27,8 +27,8 @@ def add_user(username, password):
     
     password_hash = generate_password_hash(password)
     """
-
     try:
+
         sql = "INSERT INTO users (username, password, admin) VALUES (:username, :password, FALSE)"
 
         """
@@ -37,14 +37,13 @@ def add_user(username, password):
         Code below checks if password fills the requirements, otherwise it gives a message what is missing.
 
         if len(password) < 8:
-           print("Password must contain at least 8 characters")
-        elif re.search('[0-9]',password) is None:
+            print("Password must contain at least 8 characters")
+            return False
+        if re.search('[0-9]',password) is None:
             print("Password must contain at least one number")
-        else:
-            db.session.execute(text(sql), {"username":username, "password":password})
-            db.session.commit()
+            return False
         """
-
+        
         db.session.execute(text(sql), {"username":username, "password":password})
         
         """
@@ -67,6 +66,7 @@ def get_user(username):
     return result.fetchone()
 
 def create_todo(content, username):
+
     sql = "INSERT INTO todos (content, username, created_at) VALUES ('" + content + "', '" + username + "', NOW()) RETURNING id"
     db.session.execute(text(sql))
 

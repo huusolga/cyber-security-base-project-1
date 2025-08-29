@@ -60,7 +60,9 @@
                     <input type="submit" value="Log in">
                     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
                 <br>
-                {% if session.invalid_user %}
+                {% if session.too_many_attempts %}
+                Too many attempts. Login disabled
+                {% elif session.invalid_user %}
                 <br>Invalid username or password<br>
                 {% endif %}
                 <a href="/register">Register a new user</a>
