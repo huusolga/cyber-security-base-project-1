@@ -100,6 +100,7 @@ The screenshots are from the terminal and they show what the sql command looks l
 
 ### Flaw 4: A07 Identification and Authentication Failures:
 Link to Flaw 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L32
+
 and then 
 https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L47
 
@@ -137,6 +138,7 @@ There is no before-screenshot because it doesn't really show on the browser that
 ### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
