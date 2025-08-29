@@ -60,11 +60,11 @@ def login():
     Fix 5: Security Logging and Monitoring failures
 
     Code below limits the amount of logins
-    """
+
     if session["attempts"] >= 5:
         session["too_many_attempts"] = True
         return redirect(request.referrer)
-    
+    """
     username = request.form["username"]
     password = request.form["password"]
     user = sql.get_user(username)
@@ -72,8 +72,9 @@ def login():
         session["invalid_user"] = True
         """
         Fix 5: Security Logging and Monitoring Failures
-        """
+
         session["attempts"] += 1
+        """
         return redirect(request.referrer)
     else:
         """
@@ -92,17 +93,17 @@ def login():
             session["invalid_user"] = False
             """
             Fix 5: Security Logging and Monitoring Failures
-            """
+
             session["attempts"] = 0
-            
+            """            
             session["csrf_token"] = token_hex(16)
         else:
             session["invalid_user"] = True
             """
             Fix 5: Security Logging and Monitoring Failures
-            """
+
             session["attempts"] += 1
-            
+            """
             return redirect(request.referrer)
     return redirect(request.referrer)
 
