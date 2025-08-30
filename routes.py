@@ -95,7 +95,7 @@ def login():
             Fix 5: Security Logging and Monitoring Failures
 
             session["attempts"] = 0
-            """            
+            """  
             session["csrf_token"] = token_hex(16)
         else:
             session["invalid_user"] = True
