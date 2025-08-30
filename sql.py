@@ -12,9 +12,9 @@ from sqlalchemy.sql import text
 Fix 2: Cryptographic Failures
 
 Import hash function
-
-from werkzeug.security import generate_password_hash
 """
+from werkzeug.security import generate_password_hash
+
 
 from database import db
 

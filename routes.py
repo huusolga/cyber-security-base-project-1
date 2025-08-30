@@ -1,10 +1,10 @@
 from flask import redirect, render_template, abort, request, session
 """
 Flaw 2: Cryptographic Failures
-
-
-from werkzeug.security import check_password_hash
+Importing werkzeug.security for working with hashing passwords
 """
+from werkzeug.security import check_password_hash
+
 
 from secrets import token_hex
 from app import app
