@@ -12,7 +12,7 @@ git clone https://github.com/huusolga/cyber-security-base-project-1
 ```bash
 cd csb-project1
 ```
-3. Install PostgresSQL
+3. Install PostgreSQL
 
 If you’re using… 
 - Linux: use [this installation script](https://github.com/hy-tsoha/local-pg)
@@ -41,7 +41,7 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-7. Open an another terminal and start Postgres:
+7. Open an another terminal and start PostgreSQL:
 ```bash
 start-pg.sh
 ```
@@ -78,7 +78,7 @@ However, the Todo App stores passwords as they are given, without any encryption
 
 Instead, passwords should always be encrypted so even in case of a data breach, the passwords have an extra layer of protection since attackers won’t know which hashing technique was used. The weakness is fixed in the code by hashing the passwords before storing them. For this, the werkzeug.security library is imported in routes.py and sql.py. 
 
-Fix in routes.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L81-L86
+Fix in routes.py: https://github.com/huusolga/cyber-security-base-project-1/blob/main/routes.py#L81-L87
 
 Fixes in sql.py:
 
@@ -106,7 +106,7 @@ https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L47
 
 Confirming the user's identity, using strong authentication methods, and proper session management are crucial in withholding security and are at the core of Identification and Authentication Failures. When creating a user account in the Todo App, the username and password can be anything. However, this allows for the password to be something like “123” or the same as the username, which are very weak for example in a brute force attack where passwords are retrieved through trial and error. 
 
-To fix this, an additional check for the password is included in the code. It checks whether it’s over eight characters long and if it has a number in it, for which the regular expressions library is imported. If the password fails either of those requirements, the account isn’t created and the app prints what’s missing from the password.
+To fix this, an additional check for the password is included in the code. It checks whether it’s over eight characters long and if it has a number in it, for which the regular expressions library is imported. If the password fails either of those requirements, the account isn’t created and the app prints instructions for the password.
 Ideally there are even more requirements for a password, like having to contain both lower and upper case letters as well as symbols like the exclamation mark or parenthesis, but this is just a simple example how to improve this specific application.
 
 Link to Fix 4: https://github.com/huusolga/cyber-security-base-project-1/blob/main/sql.py#L35-L44
@@ -118,7 +118,7 @@ Security Logging and Monitoring Failures refer to risks that occur during active
 
 In the Todo App, there is no limit to how many times you try to log in. The risk here is that suspicious or malicious behaviour like brute force attacks cannot be detected since the number of attempted logins aren’t being counted. It is suspicious and should be looked into if someone’s tried to log in to an account an excessive amount of times.
 
-The fix here is to set a limit to log in tries, after which you can’t attempt it anymore. The fix in the code is very simple and doesn’t give you more tries after a certain amount of time, like most applications. 
+To fix this, the amount of times you can attempt login is limited to five, after which you can’t attempt it anymore. You can try again by going to register a new user.
 
 Links to Fix 5: 
 
@@ -138,6 +138,7 @@ There is no before-screenshot because it doesn't really show on the browser that
 ### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
