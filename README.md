@@ -10,7 +10,7 @@ git clone https://github.com/huusolga/cyber-security-base-project-1
 ```
 2. Move to the project’s directory:
 ```bash
-cd csb-project1
+cd cyber-security-base-project-1
 ```
 3. Install PostgreSQL
 
@@ -138,6 +138,7 @@ There is no before-screenshot because it doesn't really show on the browser that
 ### Sources
 
 [1] https://owasp.org/Top10/ 
+
 
 
 
